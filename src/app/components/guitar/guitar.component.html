@@ -1,6 +1,5 @@
-<div *ngFor="let ropNotes of guitar.notesByRope">
-    <ul>
-        <li *ngFor="let note of ropNotes; let index = index">{{ index + 1 }} - {{ note | json }}</li>
-    </ul>
-    <hr>
+<div class="guitar">
+    <div class="rop" *ngFor="let ropNotes of guitar.notesByRope; let index = index">
+        <button *ngFor="let note of ropNotes" [title]="note.noteKey" class="fret"></button>
+    </div>
 </div>
