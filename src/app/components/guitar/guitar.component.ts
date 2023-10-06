@@ -1,24 +1,42 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
-import { AcousticGuitar, DO_SCALE, NoteKeys, Note } from '@_app/domain';
+import { AcousticGuitar, DO_MAJOR_SCALE, DO_MINOR_SCALE, Scale } from '@_app/domain';
 
-type GuitarDataView = {
-  active: boolean,
-  noteKey: NoteKeys
-}[][];
+import { GuitarDataView } from './types';
+import GuitarDataViewFactory from './guitar.data-view.factory';
+import { getScaleFromName } from './utils';
 
 const guitar = new AcousticGuitar();
 
-function isActive(note: Note): boolean {
-  return DO_SCALE.some(noteKey => noteKey === note.noteKey);
-}
-
-const guitarDataView: GuitarDataView = guitar.notesByRope.map(notes => notes.map(note => ({ noteKey: note.noteKey, active: isActive(note) })));
-
 @Component({
   templateUrl: './guitar.component.html',
-  styleUrls: ['./guitar.component.scss']
+  styleUrls: ['./guitar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GuitarComponent {
-  guitarDataView = guitarDataView;
+export class GuitarComponent implements OnInit {
+  guitarViewForm = new FormGroup({
+    scaleName: new FormControl()
+  });
+  scaleNames = [
+    DO_MAJOR_SCALE.name,
+    DO_MINOR_SCALE.name
+  ];
+
+  guitarDataView?: GuitarDataView;
+
+  constructor(private changeDetectorRef: ChangeDetectorRef) { }
+
+  ngOnInit(): void {
+    this.guitarViewForm.valueChanges.subscribe(({ scaleName }) => {
+      this.onGuitarViewScaleNameChange(scaleName);
+    });
+    this.guitarViewForm.setValue({ scaleName: DO_MAJOR_SCALE.name });
+  }
+
+  private onGuitarViewScaleNameChange(scaleName: string) {
+    const scale: Scale = getScaleFromName(scaleName);
+    this.guitarDataView = GuitarDataViewFactory.create(guitar, scale);
+    this.changeDetectorRef.markForCheck();
+  }
 }

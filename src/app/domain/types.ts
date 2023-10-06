@@ -1,3 +1,5 @@
+import NotesList from "./notes-list";
+
 export enum NoteKeys {
     DO = 'DO',
     DO_DIESE = 'DO#',
@@ -17,5 +19,7 @@ export type TuningNoteConfig = {
     noteKey: NoteKeys,
     octave: number;
 }
+
+export type Rope = NotesList;
 
 export type TuningNoteConfigList = Array<TuningNoteConfig>;

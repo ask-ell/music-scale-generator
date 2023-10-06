@@ -1,13 +1,23 @@
 <div class="container">
+    <header>
+        <form [formGroup]="guitarViewForm">
+            <select formControlName="scaleName">
+                <option *ngFor="let scaleName of scaleNames" [value]="scaleName">{{ scaleName }}</option>
+            </select>
+        </form>
+    </header>
     <div class="guitar-handle">
-        <div class="rop" *ngFor="let rop of guitarDataView; let index = index" [ngStyle]="{
+        <ng-container *ngIf="guitarDataView">
+            <div class="rope" *ngFor="let rope of guitarDataView; let index = index" [ngStyle]="{
             width: 100 / guitarDataView.length + '%'
         }">
-            <div *ngFor="let note of rop" class="fret" [ngStyle]="{
-                height: 100 / rop.length + '%'
+                <div *ngFor="let note of rope" class="fret"
+                    [ngStyle]="{
+                                                                                                                        height: 100 / rope.length + '%'
             }">
-                <button class="note" *ngIf="note.active">{{ note.noteKey }}</button>
-            </div>
-        </div>
+                    <button class="note" *ngIf="note.active">{{ note.noteKey }}</button>
+                    </div>
+                    </div>
+        </ng-container>
     </div>
 </div>
