@@ -1,5 +1,13 @@
-<div class="guitar">
-    <div class="rop" *ngFor="let ropNotes of guitar.notesByRope; let index = index">
-        <button *ngFor="let note of ropNotes" [title]="note.noteKey" class="fret"></button>
+<div class="container">
+    <div class="guitar-handle">
+        <div class="rop" *ngFor="let rop of guitarDataView; let index = index" [ngStyle]="{
+            width: 100 / guitarDataView.length + '%'
+        }">
+            <div *ngFor="let note of rop" class="fret" [ngStyle]="{
+                height: 100 / rop.length + '%'
+            }">
+                <button class="note" *ngIf="note.active">{{ note.noteKey }}</button>
+            </div>
+        </div>
     </div>
 </div>
