@@ -1,9 +1,9 @@
-import { NoteKeys } from "@_app/domain";
+import { NoteKey } from "@_app/domain";
 
 type NoteInformation = {
     active: boolean,
     octave: number,
-    noteKey: NoteKeys
+    noteKey: NoteKey
 };
 type GuitarDataViewRope = NoteInformation[];
 export type GuitarDataView = GuitarDataViewRope[];

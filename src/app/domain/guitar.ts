@@ -1,19 +1,19 @@
 import Note from "./note";
 import Rope from "./rope";
-import { NoteKeys, TuningNoteConfig } from "./types";
+import { NoteKey, NoteKeys, TuningNoteConfig } from "./types";
 
 export default class Guitar {
     readonly ropes = new Array<Rope>();
 
     constructor(tuningNoteConfigList: TuningNoteConfig[], readonly nbrFrets: number) {
-        const noteKeys = Object.values(NoteKeys);
+        const noteKeys: NoteKeys = Object.values(NoteKey);
         tuningNoteConfigList.forEach((tuningNoteConfig) => {
             let octave = tuningNoteConfig.octave;
             const firstNoteOfRope = new Note(tuningNoteConfig.noteKey, octave);
             const rope = new Rope();
             rope.push(firstNoteOfRope);
 
-            if (firstNoteOfRope.isKey(NoteKeys.SI)) {
+            if (firstNoteOfRope.isKey(NoteKey.SI)) {
                 octave++;
             }
 
@@ -26,7 +26,7 @@ export default class Guitar {
                 const noteKey = noteKeys[noteKeyIndex];
                 const note = new Note(noteKey, octave);
 
-                if (note.isKey(NoteKeys.SI)) {
+                if (note.isKey(NoteKey.SI)) {
                     octave++;
                 }
 

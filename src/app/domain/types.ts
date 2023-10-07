@@ -1,6 +1,6 @@
 import NotesList from "./notes-list";
 
-export enum NoteKeys {
+export enum NoteKey {
     DO = 'DO',
     DO_DIESE = 'DO#',
     RE = 'RE',
@@ -15,8 +15,10 @@ export enum NoteKeys {
     SI = 'SI',
 }
 
+export type NoteKeys = NoteKey[];
+
 export type TuningNoteConfig = {
-    noteKey: NoteKeys,
+    noteKey: NoteKey,
     octave: number;
 }
 

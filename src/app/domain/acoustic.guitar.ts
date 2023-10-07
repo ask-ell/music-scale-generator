@@ -1,31 +1,31 @@
 import Guitar from "./guitar";
-import { NoteKeys, TuningNoteConfigList } from "./types";
+import { NoteKey, TuningNoteConfigList } from "./types";
 
 export default class AcousticGuitar extends Guitar {
     constructor() {
         const tuningNoteConfigList: TuningNoteConfigList = [
             {
-                noteKey: NoteKeys.MI,
+                noteKey: NoteKey.MI,
                 octave: 1
             },
             {
-                noteKey: NoteKeys.LA,
+                noteKey: NoteKey.LA,
                 octave: 1,
             },
             {
-                noteKey: NoteKeys.RE,
+                noteKey: NoteKey.RE,
                 octave: 2,
             },
             {
-                noteKey: NoteKeys.SOL,
+                noteKey: NoteKey.SOL,
                 octave: 2
             },
             {
-                noteKey: NoteKeys.SI,
+                noteKey: NoteKey.SI,
                 octave: 2,
             },
             {
-                noteKey: NoteKeys.MI,
+                noteKey: NoteKey.MI,
                 octave: 3
             }
         ];

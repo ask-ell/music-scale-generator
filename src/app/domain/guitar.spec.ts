@@ -1,30 +1,30 @@
 import Guitar from "./guitar";
-import { NoteKeys, TuningNoteConfigList } from "./types";
+import { NoteKey, TuningNoteConfigList } from "./types";
 
 describe(Guitar.name, () => {
     const tuningNoteConfigList: TuningNoteConfigList = [
         {
-            noteKey: NoteKeys.MI,
+            noteKey: NoteKey.MI,
             octave: 1
         },
         {
-            noteKey: NoteKeys.LA,
+            noteKey: NoteKey.LA,
             octave: 1,
         },
         {
-            noteKey: NoteKeys.RE,
+            noteKey: NoteKey.RE,
             octave: 2,
         },
         {
-            noteKey: NoteKeys.SOL,
+            noteKey: NoteKey.SOL,
             octave: 2
         },
         {
-            noteKey: NoteKeys.SI,
+            noteKey: NoteKey.SI,
             octave: 2,
         },
         {
-            noteKey: NoteKeys.MI,
+            noteKey: NoteKey.MI,
             octave: 3
         }
     ];
@@ -34,61 +34,61 @@ describe(Guitar.name, () => {
     const assertionValues = [
         {
             firstNote: {
-                noteKey: NoteKeys.MI,
+                noteKey: NoteKey.MI,
                 octave: 1
             },
             lastNote: {
-                noteKey: NoteKeys.SI,
+                noteKey: NoteKey.SI,
                 octave: 2
             }
         },
         {
             firstNote: {
-                noteKey: NoteKeys.LA,
+                noteKey: NoteKey.LA,
                 octave: 1
             },
             lastNote: {
-                noteKey: NoteKeys.MI,
+                noteKey: NoteKey.MI,
                 octave: 3
             }
         },
         {
             firstNote: {
-                noteKey: NoteKeys.RE,
+                noteKey: NoteKey.RE,
                 octave: 2
             },
             lastNote: {
-                noteKey: NoteKeys.LA,
+                noteKey: NoteKey.LA,
                 octave: 3
             }
         },
         {
             firstNote: {
-                noteKey: NoteKeys.SOL,
+                noteKey: NoteKey.SOL,
                 octave: 2
             },
             lastNote: {
-                noteKey: NoteKeys.RE,
+                noteKey: NoteKey.RE,
                 octave: 4
             }
         },
         {
             firstNote: {
-                noteKey: NoteKeys.SI,
+                noteKey: NoteKey.SI,
                 octave: 2
             },
             lastNote: {
-                noteKey: NoteKeys.FA_DIESE,
+                noteKey: NoteKey.FA_DIESE,
                 octave: 4
             }
         },
         {
             firstNote: {
-                noteKey: NoteKeys.MI,
+                noteKey: NoteKey.MI,
                 octave: 3
             },
             lastNote: {
-                noteKey: NoteKeys.SI,
+                noteKey: NoteKey.SI,
                 octave: 4
             }
         }

@@ -1,7 +1,7 @@
 import Scale from "./scale";
-import { NoteKeys } from "./types";
+import { NoteKey } from "./types";
 
-const { DO, RE, RE_DIESE, MI, FA, SOL, SOL_DIESE, LA, SI } = NoteKeys;
+const { DO, RE, RE_DIESE, MI, FA, SOL, SOL_DIESE, LA, SI } = NoteKey;
 
 const DO_MAJOR_SCALE = new Scale("Do M", [DO, RE, MI, FA, SOL, LA, SI]);
 

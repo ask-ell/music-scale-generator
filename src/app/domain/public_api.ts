@@ -1,8 +1,8 @@
 import AcousticGuitar from "./acoustic.guitar";
 import Note from "./note";
-import { NoteKeys } from "./types";
+import { NoteKey } from "./types";
 import { SCALES } from "./scales";
 import Guitar from "./guitar";
 import Scale from "./scale";
 
-export { AcousticGuitar, NoteKeys, Guitar, Note, Scale, SCALES }
+export { AcousticGuitar, NoteKey, Guitar, Note, Scale, SCALES }
