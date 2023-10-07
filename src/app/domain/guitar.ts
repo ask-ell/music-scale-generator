@@ -10,8 +10,8 @@ export default class Guitar {
         tuningNoteConfigList.forEach((tuningNoteConfig) => {
             let octave = tuningNoteConfig.octave;
             const firstNoteOfRope = new Note(tuningNoteConfig.noteKey, octave);
-            const rop = new Rope();
-            rop.push(firstNoteOfRope);
+            const rope = new Rope();
+            rope.push(firstNoteOfRope);
 
             if (firstNoteOfRope.isKey(NoteKeys.SI)) {
                 octave++;
@@ -30,10 +30,10 @@ export default class Guitar {
                     octave++;
                 }
 
-                rop.push(note);
+                rope.push(note);
             }
 
-            this.ropes.push(rop);
+            this.ropes.push(rope);
         });
     }
 }
