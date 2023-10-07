@@ -12,12 +12,10 @@
             width: 100 / guitarDataView.length + '%'
         }">
                 <div *ngFor="let note of rope" class="fret"
-                    [ngStyle]="{
-                                                                                                                        height: 100 / rope.length + '%'
-            }">
-                    <button class="note" *ngIf="note.active">{{ note.noteKey }}</button>
-                    </div>
-                    </div>
+                    [ngStyle]="{ height: 100 / rope.length + '%' }">
+                    <button class="note" *ngIf="note.active">{{ note.noteKey }} {{ note.octave }}</button>
+                </div>
+            </div>
         </ng-container>
     </div>
 </div>

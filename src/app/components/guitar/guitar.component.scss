@@ -4,15 +4,15 @@ $headerSize: 60px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    }
+}
     
-    header {
-        height: $headerSize;
-        display: flex;
-    }
-    
-    header form {
-        margin: auto;
+header {
+    height: $headerSize;
+    display: flex;
+}
+
+header form {
+    margin: auto;
 }
 
 .guitar-handle {
@@ -46,4 +46,5 @@ $headerSize: 60px;
     top: 0%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+    width: 80%;
 }
