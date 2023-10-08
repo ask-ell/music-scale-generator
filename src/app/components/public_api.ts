@@ -1,4 +1,4 @@
-import { GuitarModule } from "./guitar/guitar.module";
+import GuitarModule from "./guitar/guitar.module";
 
 export {
     GuitarModule

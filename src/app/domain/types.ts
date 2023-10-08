@@ -15,6 +15,11 @@ export enum NoteKey {
     SI = 'SI',
 }
 
+export enum ScaleName {
+    DO_M = 'Do M',
+    DO_m = 'Do m'
+}
+
 export type NoteKeys = NoteKey[];
 
 export type TuningNoteConfig = {

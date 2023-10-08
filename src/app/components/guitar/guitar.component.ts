@@ -1,23 +1,19 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
-import { AcousticGuitar, SCALES, Scale } from '@_app/domain';
+import { checkDataIsDefinedAndNotNull } from '@_app/core';
+import { ACOUSTIC_GUITAR, SCALES, Scale, ScaleName, getScaleFromName, parseScaleName } from '@_app/domain';
 
-import { GuitarDataView } from './types';
+import { GuitarControllerRawValue, GuitarDataView } from './types';
 import GuitarDataViewFactory from './guitar.data-view.factory';
-import { getScaleFromName } from './utils';
-
-const guitar = new AcousticGuitar();
+import { GuitarController } from './guitar.controller';
 
 @Component({
   templateUrl: './guitar.component.html',
   styleUrls: ['./guitar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GuitarComponent implements OnInit {
-  guitarViewForm = new FormGroup({
-    scaleName: new FormControl()
-  });
+export default class GuitarComponent implements OnInit {
+  guitarController = new GuitarController();
   scaleNames: string[] = SCALES.map(scale => scale.name);
 
   guitarDataView?: GuitarDataView;
@@ -25,15 +21,19 @@ export class GuitarComponent implements OnInit {
   constructor(private changeDetectorRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.guitarViewForm.valueChanges.subscribe(({ scaleName }) => {
-      this.onScaleNameChange(scaleName);
-    });
-    this.guitarViewForm.setValue({ scaleName: SCALES[0].name });
+    this.guitarController.valueChanges.subscribe(this.onGuitarViewFormChanges.bind(this));
+    this.guitarController.setValue({ scaleName: ScaleName.DO_M });
   }
 
-  private onScaleNameChange(scaleName: string) {
+  private onGuitarViewFormChanges({ scaleName }: GuitarControllerRawValue): void {
+    const definedScaleName: string = checkDataIsDefinedAndNotNull(scaleName);
+    const parsedScaleName: ScaleName = parseScaleName(definedScaleName);
+    this.onScaleNameChange(parsedScaleName);
+  }
+
+  private onScaleNameChange(scaleName: ScaleName): void {
     const scale: Scale = getScaleFromName(scaleName);
-    this.guitarDataView = GuitarDataViewFactory.create(guitar, scale);
+    this.guitarDataView = GuitarDataViewFactory.create(ACOUSTIC_GUITAR, scale);
     this.changeDetectorRef.markForCheck();
   }
 }

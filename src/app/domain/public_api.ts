@@ -1,8 +1,20 @@
-import AcousticGuitar from "./acoustic.guitar";
 import Note from "./note";
-import { NoteKey } from "./types";
-import { SCALES } from "./scales";
 import Guitar from "./guitar";
 import Scale from "./scale";
+import UnkownScaleNameError from "./errors/unknown-scale-name.error";
+import { NoteKey, ScaleName } from "./types";
+import { SCALES, getScaleFromName, parseScaleName } from "./scales";
+import { ACOUSTIC_GUITAR } from "./instruments";
 
-export { AcousticGuitar, NoteKey, Guitar, Note, Scale, SCALES }
+export {
+    NoteKey,
+    ScaleName,
+    Guitar,
+    Note,
+    Scale,
+    UnkownScaleNameError,
+    SCALES,
+    ACOUSTIC_GUITAR,
+    getScaleFromName,
+    parseScaleName
+}
