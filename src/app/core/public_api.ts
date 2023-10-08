@@ -1,3 +1,4 @@
 import { checkDataIsDefinedAndNotNull } from "./nullables";
+import { MaybeNull, MaybeUndefined } from "./types";
 
-export { checkDataIsDefinedAndNotNull }
+export { MaybeNull, MaybeUndefined, checkDataIsDefinedAndNotNull }

@@ -1,3 +1,4 @@
+import { MaybeNull } from "@_app/core";
 import { NoteKey } from "@_app/domain";
 
 type NoteDataView = {
@@ -11,5 +12,5 @@ type RopeDataView = NoteDataView[];
 export type GuitarDataView = RopeDataView[];
 
 export type GuitarControllerRawValue = Partial<{
-    scaleName: string | null;
+    scaleName: MaybeNull<string>;
 }>;

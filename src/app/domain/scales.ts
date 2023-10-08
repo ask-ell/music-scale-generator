@@ -1,3 +1,5 @@
+import { MaybeUndefined } from "@_app/core";
+
 import NotRegistredScaleError from "./errors/not-registred-scale.error";
 import UnkownScaleNameError from "./errors/unknown-scale-name.error";
 import Scale from "./scale";
@@ -23,7 +25,7 @@ export function parseScaleName(scaleName: string): ScaleName {
 }
 
 export function getScaleFromName(scaleName: ScaleName): Scale {
-    const scale: Scale | undefined = SCALES.find(scale => scale.name === scaleName);
+    const scale: MaybeUndefined<Scale> = SCALES.find(scale => scale.name === scaleName);
     if (!scale) {
         throw new NotRegistredScaleError(scaleName);
     }
